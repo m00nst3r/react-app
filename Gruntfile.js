@@ -1,0 +1,27 @@
+module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        copy: {
+            main: {
+                files: [
+                     {expand: true, cwd: 'build', src: ['**'], dest: 'tmp/public'}
+                ]
+            },
+            again: {
+                files: [
+                    {expand: true, cwd:'tmp', src: ['**'], dest: 'build'},
+                    {expand: true, src: 'package.json', dest: 'build'}
+                ]
+            }
+        },
+        clean: {
+            firstBuild: ['build/*'],
+            tmp: ['tmp']
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
+    grunt.registerTask('default', ['copy:main', 'clean:firstBuild', 'copy:again', 'clean:tmp']);
+}
