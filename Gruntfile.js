@@ -10,6 +10,7 @@ module.exports = function(grunt) {
             again: {
                 files: [
                     {expand: true, cwd:'tmp', src: ['**'], dest: 'build'},
+                    {expand: true, cwd:'server', src: ['**'], dest: 'build'},
                     {expand: true, src: 'package.json', dest: 'build'}
                 ]
             }
@@ -17,11 +18,31 @@ module.exports = function(grunt) {
         clean: {
             firstBuild: ['build/*'],
             tmp: ['tmp']
+        },
+        modify_json: {
+            files: {
+                expand: true,
+                cwd: './build',
+                src: 'package.json',
+                options: {
+                    add: true,
+                    fields: {
+                        "scripts": {
+                            "start": "node index.js"
+                        },
+                        "dependencies": {
+                            "express": "^4.15.2"
+                        },
+                        "devDependencies": {}
+                    }
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-modify-json');
 
-    grunt.registerTask('default', ['copy:main', 'clean:firstBuild', 'copy:again', 'clean:tmp']);
-}
+    grunt.registerTask('default', ['copy:main', 'clean:firstBuild', 'copy:again', 'clean:tmp', 'modify_json']);
+};
