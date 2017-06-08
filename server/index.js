@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 
 app.use(sendIndexHtml);
 
-server.listen(3000, function () {
+server.listen(80, function () {
     const port = server.address().port;
     console.log('Listening at http://%s', port);
 });
