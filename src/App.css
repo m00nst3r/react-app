@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -21,4 +21,50 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.drop-down {
+  color: #c7caca;
+}
+
+.App-Block {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid #c7caca;
+  display: block;
+  z-index: auto;
+}
+
+.App-Block .Select {
+  position: fixed;
+  display: inline-block;
+  width: 300px;
+  z-index: 1;
+}
+
+.second {
+  background-color: #fff;
+  height: 300px;
+}
+.box-title {
+  padding: 10px 0 0 10px;
+  display: block;
+  background: rgb(0, 0, 94);
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom: 4px solid rgb(64, 191, 163);
+  text-align: left;
+}
+.box-body {
+  background-color: #fff;
+}
+
+.action-keys {
+  display: inline-block;
+  font-weight: normal;
+  /*text-align: right;*/
+}
+.action-keys i{
+  cursor: pointer;
 }

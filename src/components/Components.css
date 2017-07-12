@@ -1,0 +1,9 @@
+.App-Block .test-component {
+    position: fixed;
+    display: inline-block;
+    width: 300px;
+    z-index: 2;
+    float: left;
+    background: #ca6767;
+    height: 250px;
+}

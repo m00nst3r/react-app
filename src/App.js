@@ -1,18 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import BrickComponent from './components/BrickComponent'
+import TestModal from "./modals/TestModal";
+import {RaisedButton} from 'material-ui'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css';
+import CreateItemBlock from "./components/CreateItemBlock";
+
 
 class App extends Component {
+    componentWillMount() {
+        injectTapEventPlugin()
+    }
+
+    showState = () => {
+        console.log(this.props);
+        console.log(this.state);
+    };
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <BrickComponent title="Test Component">
+              <MuiThemeProvider>
+                  <TestModal/>
+              </MuiThemeProvider>
+          </BrickComponent>
+          <BrickComponent title="Create Component">
+              <CreateItemBlock/>
+          </BrickComponent>
+          <MuiThemeProvider>
+              <div>
+                  <Tooltip placement="left" trigger={['hover']} overlay={<span>tooltip</span>}>
+                      <RaisedButton disabled={true} onClick={this.showState} label="State"/>
+                  </Tooltip>
+
+              </div>
+          </MuiThemeProvider>
       </div>
     );
   }
