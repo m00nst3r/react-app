@@ -1,43 +1,36 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import BrickComponent from './components/BrickComponent'
-import TestModal from "./modals/TestModal";
-import {RaisedButton} from 'material-ui'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import TestModal from "./modals/TestModal";
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Tooltip from 'rc-tooltip';
-import 'rc-tooltip/assets/bootstrap.css';
 import CreateItemBlock from "./components/CreateItemBlock";
+import ShowTooltips from './components/ShowTooltips';
+import TableComponent from "./components/TableComponent";
+import FiltersComponent from "./components/FiltersComponent";
 
 
 class App extends Component {
-    componentWillMount() {
-        injectTapEventPlugin()
-    }
+  componentWillMount() {
+    injectTapEventPlugin()
+  }
 
-    showState = () => {
-        console.log(this.props);
-        console.log(this.state);
-    };
+  showState = () => {
+    console.log(this.props);
+    console.log(this.state);
+  };
 
   render() {
     return (
       <div className="App">
-          <BrickComponent title="Test Component">
-              <MuiThemeProvider>
-                  <TestModal/>
-              </MuiThemeProvider>
-          </BrickComponent>
-          <BrickComponent title="Create Component">
-              <CreateItemBlock/>
-          </BrickComponent>
-          <MuiThemeProvider>
-              <div>
-                  <Tooltip placement="left" trigger={['hover']} overlay={<span>tooltip</span>}>
-                      <RaisedButton disabled={true} onClick={this.showState} label="State"/>
-                  </Tooltip>
-
-              </div>
-          </MuiThemeProvider>
+        <BrickComponent title="My Table">
+          <FiltersComponent/>
+          <TableComponent table={[]}/>
+        </BrickComponent>
+        <BrickComponent title="Create Component">
+          <CreateItemBlock/>
+        </BrickComponent>
+        <BrickComponent title="Test Component">
+          <ShowTooltips/>
+        </BrickComponent>
       </div>
     );
   }
