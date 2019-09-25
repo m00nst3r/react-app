@@ -1,5 +1,7 @@
 import * as React from "react";
 import {MuiThemeProvider, RaisedButton} from "material-ui";
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 
 class CreateItemBlock extends React.Component {
     componentWillMount() {
@@ -30,11 +32,32 @@ class CreateItemBlock extends React.Component {
             console.log('END');
         });
     };
+    generatePrf = () => {
+      const el = document.body;
+      const options = {
+        useCORS: true,
+        allowTaint: true
+      };
+      html2canvas(el, options)
+        .then(canvas => {
+          // document.body.appendChild(canvas);
+          const image = canvas.toDataURL('image/jpeg');
+          let doc = new jsPDF({
+            orientation: 'landscape'
+          });
+
+          doc.addImage(image, 'jpeg', 10, 10, 275, 180);
+          doc.save('report.pdf');
+        })
+    };
     render() {
         return (
             <div>
                 <MuiThemeProvider>
-                    <RaisedButton onClick={this.showState} label="Hello"/>
+                    <div>
+                      <RaisedButton onClick={this.showState} label="Hello"/>
+                      <RaisedButton onClick={this.generatePrf} label={'generate pdf'}/>
+                    </div>
                 </MuiThemeProvider>
             </div>
         )

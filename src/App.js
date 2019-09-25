@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import BrickComponent from './components/BrickComponent'
-// import TestModal from "./modals/TestModal";
+import PropTypes from 'prop-types'
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import CreateItemBlock from "./components/CreateItemBlock";
-import ShowTooltips from './components/ShowTooltips';
-import TableComponent from "./components/TableComponent";
-import FiltersComponent from "./components/FiltersComponent";
+import Navigation from "./components/Navigation";
 
 
 class App extends Component {
@@ -13,27 +9,20 @@ class App extends Component {
     injectTapEventPlugin()
   }
 
-  showState = () => {
-    console.log(this.props);
-    console.log(this.state);
-  };
+
 
   render() {
     return (
       <div className="App">
-        <BrickComponent title="My Table">
-          <FiltersComponent/>
-          <TableComponent table={[]}/>
-        </BrickComponent>
-        <BrickComponent title="Create Component">
-          <CreateItemBlock/>
-        </BrickComponent>
-        <BrickComponent title="Test Component">
-          <ShowTooltips/>
-        </BrickComponent>
+        <Navigation/>
+        {this.props.children}
       </div>
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.node
+};
 
 export default App;

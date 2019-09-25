@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="navigation"
+  >
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+       | 
+    </span>
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Test application
+      </a>
+       | 
+    </span>
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        List Application
+      </a>
+       | 
+    </span>
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Single Value
+      </a>
+       | 
+    </span>
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Resize
+      </a>
+       | 
+    </span>
+    <span>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Block
+      </a>
+       | 
+    </span>
+  </div>
+</div>
+`;

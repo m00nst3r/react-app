@@ -10,7 +10,7 @@ import {bisector} from 'd3-array'
 
 import MaxPrice from './maxprice';
 import MinPrice from './minprice';
-import formaPrice from "../utils/formaPrice";
+import formatPrice from "../utils/formaPrice";
 import formatDate from "../utils/formatDate";
 
 class Chart extends React.Component {
@@ -80,7 +80,7 @@ class Chart extends React.Component {
             yScale={yScale}
             x={x}
             y={y}
-            label={formaPrice(maxPrice)}
+            label={formatPrice(maxPrice)}
             yText={yScale(maxPrice)}
           />
           <MinPrice
@@ -89,7 +89,7 @@ class Chart extends React.Component {
             yScale={yScale}
             x={x}
             y={y}
-            label={formaPrice(minPrice)}
+            label={formatPrice(minPrice)}
             yText={yScale(minPrice)}
           />
           <AreaClosed
@@ -104,7 +104,8 @@ class Chart extends React.Component {
           <Bar
             data={data}
             height={height}
-            width={width} fill="transparent"
+            width={width} 
+            fill="transparent"
             onMouseMove={data => event => {
               const {x: xPoint} = localPoint(this.svg, event);
               const x0 = xScale.invert(xPoint);
@@ -140,7 +141,7 @@ class Chart extends React.Component {
               backgroundColor: '#6086d6',
               color: '#ffffff'
             }}>
-            {formaPrice(y(tooltipData))}
+            {formatPrice(y(tooltipData))}
           </Tooltip>
           <Tooltip left={tooltipLeft}
                    top={yScale(minPrice)}
