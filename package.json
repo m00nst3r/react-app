@@ -22,7 +22,7 @@
     "d3-time-format": "^2.0.5",
     "enzyme": "^2.9.1",
     "font-awesome": "^4.7.0",
-    "grunt": "^1.5.2",
+    "grunt": "^1.5.3",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-modify-json": "^0.1.3",
